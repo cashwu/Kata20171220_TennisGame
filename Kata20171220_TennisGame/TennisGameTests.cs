@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace Kata20171220_TennisGame
 {
@@ -16,16 +17,23 @@ namespace Kata20171220_TennisGame
         [TestMethod]
         public void FifteenLove()
         {
-            tennisGame.PlayerOneScore();
+            PlayerOneScoreTime(1);
             AssertScoreShouldBe("FifteenLove");
         }
 
         [TestMethod]
         public void ThirtyLove()
         {
-            tennisGame.PlayerOneScore();
-            tennisGame.PlayerOneScore();
+            PlayerOneScoreTime(2);
             AssertScoreShouldBe("ThirtyLove");
+        }
+
+        private void PlayerOneScoreTime(int time)
+        {
+            for (int i = 0; i < time; i++)
+            {
+                tennisGame.PlayerOneScore();
+            }
         }
 
         private void AssertScoreShouldBe(string expected)
@@ -39,15 +47,17 @@ namespace Kata20171220_TennisGame
     {
         private int playerOneScore;
 
+        private Dictionary<int, string> mapping = new Dictionary<int, string>
+        {
+            {1, "Fifteen"},
+            {2, "Thirty"},
+        };
+
         public string Score()
         {
             if (playerOneScore != 0)
             {
-                if (playerOneScore == 2)
-                {
-                    return "ThirtyLove";
-                }
-                return "FifteenLove";
+                return mapping[playerOneScore] + "Love";
             }
             return "LoveAll";
         }
