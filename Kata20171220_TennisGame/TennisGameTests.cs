@@ -145,28 +145,56 @@ namespace Kata20171220_TennisGame
 
         public string Score()
         {
-            if (playerOneScore != playerTwoScore)
+            if (IsDiffScore())
             {
-                if (playerOneScore > 3 || playerTwoScore > 3)
+                if (IsReadyToWin())
                 {
-                    var advPlayer = playerOneScore > playerTwoScore ? "PlayerOne" : "PlayerTwo";
-                    if (Math.Abs(playerOneScore - playerTwoScore) == 1)
-                    {
-                        return advPlayer + "Adv";
-                    }
-                    return advPlayer + "Win";
+                    return AdvPlayer() + (IsAdv() ? "Adv" : "Win");
                 }
-                if (playerTwoScore > 3)
-                {
-                    return "PlayerTwoAdv";
-                }
-                return mapping[playerOneScore] + mapping[playerTwoScore];
+                return NormalScore();
             }
-            if (playerOneScore >= 3)
-            {
-                return "Deuce";
-            }
+            return IsDeuce() ? Deuce() : SameScore();
+        }
+
+        private bool IsReadyToWin()
+        {
+            return playerOneScore > 3 || playerTwoScore > 3;
+        }
+
+        private bool IsAdv()
+        {
+            return Math.Abs(playerOneScore - playerTwoScore) == 1;
+        }
+
+        private string NormalScore()
+        {
+            return mapping[playerOneScore] + mapping[playerTwoScore];
+        }
+
+        private string SameScore()
+        {
             return mapping[playerOneScore] + "All";
+        }
+
+        private static string Deuce()
+        {
+            return "Deuce";
+        }
+
+        private bool IsDeuce()
+        {
+            return playerOneScore >= 3;
+        }
+
+        private bool IsDiffScore()
+        {
+            return playerOneScore != playerTwoScore;
+        }
+
+        private string AdvPlayer()
+        {
+            var advPlayer = playerOneScore > playerTwoScore ? "PlayerOne" : "PlayerTwo";
+            return advPlayer;
         }
 
         public void PlayerOneScore()
