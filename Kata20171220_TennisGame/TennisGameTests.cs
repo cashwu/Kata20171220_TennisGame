@@ -49,6 +49,14 @@ namespace Kata20171220_TennisGame
             AssertScoreShouldBe("LoveThirty");
         }
 
+        [TestMethod]
+        public void FifteenAll()
+        {
+            PlayerOneScoreTime(1);
+            PlayerTwoScoreTime(1);
+            AssertScoreShouldBe("FifteenAll");
+        }
+
         private void PlayerTwoScoreTime(int time)
         {
             for (int i = 0; i < time; i++)
@@ -88,11 +96,12 @@ namespace Kata20171220_TennisGame
 
         public string Score()
         {
-            if (playerOneScore != 0 || playerTwoScore != 0)
+            if (playerOneScore != playerTwoScore)
             {
                 return mapping[playerOneScore] + mapping[playerTwoScore];
             }
-            return "LoveAll";
+
+            return mapping[playerOneScore] + "All";
         }
 
         public void PlayerOneScore()
