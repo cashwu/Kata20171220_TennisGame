@@ -57,6 +57,22 @@ namespace Kata20171220_TennisGame
             AssertScoreShouldBe("FifteenAll");
         }
 
+        [TestMethod]
+        public void Deuce()
+        {
+            PlayerOneScoreTime(3);
+            PlayerTwoScoreTime(3);
+            AssertScoreShouldBe("Deuce");
+        }
+
+        [TestMethod]
+        public void DeuceWith4()
+        {
+            PlayerOneScoreTime(4);
+            PlayerTwoScoreTime(4);
+            AssertScoreShouldBe("Deuce");
+        }
+
         private void PlayerTwoScoreTime(int time)
         {
             for (int i = 0; i < time; i++)
@@ -100,7 +116,10 @@ namespace Kata20171220_TennisGame
             {
                 return mapping[playerOneScore] + mapping[playerTwoScore];
             }
-
+            if (playerOneScore >= 3)
+            {
+                return "Deuce";
+            }
             return mapping[playerOneScore] + "All";
         }
 
