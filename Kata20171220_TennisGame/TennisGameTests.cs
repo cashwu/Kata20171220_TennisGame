@@ -42,6 +42,14 @@ namespace Kata20171220_TennisGame
             AssertScoreShouldBe("LoveFifteen");
         }
 
+        [TestMethod]
+        public void LoveThirty()
+        {
+            tennisGame.PlayerTwoScore();
+            tennisGame.PlayerTwoScore();
+            AssertScoreShouldBe("LoveThirty");
+        }
+
         private void PlayerOneScoreTime(int time)
         {
             for (int i = 0; i < time; i++)
