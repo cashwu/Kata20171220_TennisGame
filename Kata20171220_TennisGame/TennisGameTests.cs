@@ -130,9 +130,10 @@ namespace Kata20171220_TennisGame
         {
             if (playerOneScore != playerTwoScore)
             {
-                if (playerOneScore > 3)
+                if (playerOneScore > 3 || playerTwoScore > 3)
                 {
-                    return "PlayerOneAdv";
+                    var advPlayer = playerOneScore > playerTwoScore ? "PlayerOne" : "PlayerTwo";
+                    return advPlayer + "Adv";
                 }
                 if (playerTwoScore > 3)
                 {
