@@ -98,6 +98,14 @@ namespace Kata20171220_TennisGame
             AssertScoreShouldBe("PlayerOneWin");
         }
 
+        [TestMethod]
+        public void PlayerTwoWin()
+        {
+            PlayerOneScoreTime(3);
+            PlayerTwoScoreTime(5);
+            AssertScoreShouldBe("PlayerTwoWin");
+        }
+
         private void PlayerTwoScoreTime(int time)
         {
             for (int i = 0; i < time; i++)
