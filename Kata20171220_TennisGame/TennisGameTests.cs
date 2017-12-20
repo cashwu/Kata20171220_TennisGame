@@ -73,6 +73,14 @@ namespace Kata20171220_TennisGame
             AssertScoreShouldBe("Deuce");
         }
 
+        [TestMethod]
+        public void PlayerOneAdv()
+        {
+            PlayerOneScoreTime(4);
+            PlayerTwoScoreTime(3);
+            AssertScoreShouldBe("PlayerOneAdv");
+        }
+
         private void PlayerTwoScoreTime(int time)
         {
             for (int i = 0; i < time; i++)
@@ -114,6 +122,10 @@ namespace Kata20171220_TennisGame
         {
             if (playerOneScore != playerTwoScore)
             {
+                if (playerOneScore > 3)
+                {
+                    return "PlayerOneAdv";
+                }
                 return mapping[playerOneScore] + mapping[playerTwoScore];
             }
             if (playerOneScore >= 3)
