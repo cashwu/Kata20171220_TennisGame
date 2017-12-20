@@ -63,6 +63,7 @@ namespace Kata20171220_TennisGame
 
         private Dictionary<int, string> mapping = new Dictionary<int, string>
         {
+            {0, "Love"},
             {1, "Fifteen"},
             {2, "Thirty"},
             {3, "Forty"},
@@ -72,13 +73,9 @@ namespace Kata20171220_TennisGame
 
         public string Score()
         {
-            if (playerOneScore != 0)
+            if (playerOneScore != 0 || playerTwoScore != 0)
             {
-                return mapping[playerOneScore] + "Love";
-            }
-            if (playerTwoScore != 0)
-            {
-                return "Love" + mapping[playerTwoScore];
+                return mapping[playerOneScore] + mapping[playerTwoScore];
             }
             return "LoveAll";
         }
