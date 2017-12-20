@@ -28,6 +28,13 @@ namespace Kata20171220_TennisGame
             AssertScoreShouldBe("ThirtyLove");
         }
 
+        [TestMethod]
+        public void FortyLove()
+        {
+            PlayerOneScoreTime(3);
+            AssertScoreShouldBe("FortyLove");
+        }
+
         private void PlayerOneScoreTime(int time)
         {
             for (int i = 0; i < time; i++)
@@ -51,6 +58,7 @@ namespace Kata20171220_TennisGame
         {
             {1, "Fifteen"},
             {2, "Thirty"},
+            {3, "Forty"},
         };
 
         public string Score()
