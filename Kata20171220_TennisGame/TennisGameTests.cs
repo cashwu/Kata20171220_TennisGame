@@ -18,7 +18,7 @@ namespace Kata20171220_TennisGame
         [TestMethod]
         public void FifteenLove()
         {
-            PlayerOneScoreTime(1);
+            PlayerOneScoreTime(3);
             AssertScoreShouldBe("FifteenLove");
         }
 
